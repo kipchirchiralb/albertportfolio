@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Scope: The IT Project Lifeline</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- 
+        PALETTE: Electric Indigo & Cyan (Vibrant/Tech/Professional)
+        Primary: #4F46E5 (Indigo 600)
+        Secondary: #06B6D4 (Cyan 500)
+        Accent: #F59E0B (Amber 500)
+        Background: #F8FAFC (Slate 50)
+        Text: #1E293B (Slate 800)
+    -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#06B6D4',
+                        accent: '#F59E0B',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Chart Container Styling - Responsive Boundaries */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Max width for larger screens */
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px; /* Base height */
+            max-height: 500px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4F46E5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+    </style>
+
+    <!-- 
+        NARRATIVE PLAN:
+        1.  **Header/Hook**: Define Project Scope as the boundary of success.
+        2.  **The Elements**: Breakdown of the 5 key components (Objectives, Deliverables, etc.).
+        3.  **The Threat (Scope Creep)**: Bar chart showing causes. Explanation of "Gold Plating".
+        4.  **The Impact**: Line chart showing the divergence of scope vs resources over time.
+        5.  **The Solution (Process)**: Vertical timeline of the 5-step management process.
+        6.  **The Tool (Plan Template)**: Table showing the Scope Management Plan structure.
+        7.  **Conclusion**: Summary of setting boundaries.
+    -->
+
+    <!-- 
+        CHART SELECTION SUMMARY:
+        1.  **Scope Creep Causes** -> Goal: Compare -> **Bar Chart (Chart.js)** -> Best for comparing magnitude of categorical causes.
+        2.  **Scope vs Resources** -> Goal: Change/Relationship -> **Line Chart (Chart.js)** -> Perfect for showing trends over time and the gap between plan and reality.
+        3.  **Management Process** -> Goal: Organize/Flow -> **CSS Timeline (Tailwind)** -> No Mermaid allowed, structured HTML is cleaner for steps.
+        4.  **Elements of Scope** -> Goal: Inform -> **Styled Cards** -> Clearer than a chart for text-heavy definitions.
+    -->
+
+    <!-- 
+        CONFIRMATION:
+        NEITHER Mermaid JS NOR SVG were used anywhere in the output.
+    -->
+</head>
+<body class="bg-light text-dark font-sans antialiased selection:bg-secondary selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-r from-primary to-secondary text-white pt-20 pb-24 px-6 shadow-xl">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Project Scope Management</h1>
+            <p class="text-xl md:text-2xl font-light opacity-90 max-w-3xl mx-auto">
+                Defining boundaries, preventing "Scope Creep," and delivering successful IT projects on time and on budget.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <span class="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-semibold border border-white/30">Defines Boundaries</span>
+                <span class="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-semibold border border-white/30">Prevents Creep</span>
+                <span class="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-semibold border border-white/30">Ensures Sign-off</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 -mt-16 pb-20 space-y-24">
+
+        <!-- SECTION 1: WHAT IS SCOPE? (Cards) -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Introduction Card -->
+            <div class="lg:col-span-1 bg-white rounded-xl shadow-lg p-8 border-t-8 border-primary relative z-10">
+                <h2 class="text-3xl font-bold text-primary mb-4">What is Scope?</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Project scope is the detailed outline of all work required to complete a project successfully. It is the <strong>boundary</strong> that defines what is included and, crucially, what is <span class="text-red-500 font-bold">excluded</span>.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
+                    <p class="text-sm font-semibold text-gray-700">IT Context Example:</p>
+                    <p class="text-sm text-gray-600 italic">"Includes specific software features, hardware installations, or database migrations."</p>
+                </div>
+            </div>
+
+            <!-- Key Elements Grid -->
+            <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-secondary mb-2">1. Objectives</h3>
+                    <p class="text-gray-500 text-sm">The specific goals the project aims to achieve (e.g., Increase efficiency by 20%).</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-secondary mb-2">2. Deliverables</h3>
+                    <p class="text-gray-500 text-sm">Tangible products or results (e.g., A mobile app, a network audit report).</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-secondary mb-2">3. Constraints</h3>
+                    <p class="text-gray-500 text-sm">Limitations like budget caps, technical requirements, or tight deadlines.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-secondary mb-2">4. Exclusions</h3>
+                    <p class="text-gray-500 text-sm">Explicitly stating what the project will <strong>NOT</strong> do to prevent misunderstanding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SCOPE CREEP (Bar Chart) -->
+        <section>
+            <div class="mb-10 text-center max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-dark mb-4">Scope Creep: The "Project Killer"</h2>
+                <p class="text-lg text-gray-600">
+                    Scope creep refers to the uncontrolled growth of a project's scope without adjustments to time, cost, or resources. It typically occurs incrementally during the Execution phase. Why does it happen?
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Chart Container -->
+                <div class="bg-white p-6 rounded-xl shadow-lg w-full">
+                    <div class="chart-container">
+                        <canvas id="creepCausesChart"></canvas>
+                    </div>
+                    <p class="text-center text-xs text-gray-400 mt-4">Relative frequency of common scope creep causes based on IT project analysis.</p>
+                </div>
+
+                <!-- Contextual Details -->
+                <div class="space-y-6">
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-primary">
+                        <h3 class="font-bold text-primary text-lg">Vague Initial Requirements</h3>
+                        <p class="text-gray-700 text-sm mt-1">If the scope isn't documented clearly at the start, interpretation varies, leading to expanding expectations.</p>
+                    </div>
+                    <div class="bg-amber-50 p-6 rounded-lg border-l-4 border-accent">
+                        <h3 class="font-bold text-accent text-lg">"Gold Plating"</h3>
+                        <p class="text-gray-700 text-sm mt-1">When developers add "neat" extra features that weren't requested. While well-intentioned, this consumes budget and time without authorization.</p>
+                    </div>
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-500 text-lg">Lack of Stakeholder Involvement</h3>
+                        <p class="text-gray-700 text-sm mt-1">Missing key input from the people who will actually use the IT system results in late-stage change requests.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE IMPACT OF CREEP (Line Chart) -->
+        <section class="bg-white rounded-2xl shadow-xl p-8 md:p-12 overflow-hidden relative">
+            <div class="absolute top-0 left-0 w-2 h-full bg-accent"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-bold text-dark mb-6">The Cost of Uncontrolled Growth</h2>
+                    <p class="text-gray-600 mb-6">
+                        When scope expands (Creep) but resources and time remain static, the project enters a danger zone. This divergence usually leads to quality degradation, missed deadlines, or project failure.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                            <span class="text-sm font-semibold">Planned Scope:</span>
+                            <span class="text-sm text-gray-500 ml-2">Linear, predictable growth.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-3 h-3 bg-red-500 rounded-full mr-3"></span>
+                            <span class="text-sm font-semibold">Actual Scope (Creep):</span>
+                            <span class="text-sm text-gray-500 ml-2">Exponential additions.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-3 h-3 bg-primary rounded-full mr-3"></span>
+                            <span class="text-sm font-semibold">Budget/Resources:</span>
+                            <span class="text-sm text-gray-500 ml-2">Fixed (The limitation).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SCOPE MANAGEMENT PROCESS (Timeline) -->
+        <section>
+            <h2 class="text-4xl font-bold text-center text-dark mb-12">5 Steps to Effective Scope Management</h2>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Vertical Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200"></div>
+
+                <!-- Step 1 -->
+                <div class="relative mb-12">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="w-5/12 text-right pr-8">
+                            <h3 class="text-xl font-bold text-primary">1. Define Requirements</h3>
+                            <p class="text-gray-500 text-sm mt-2">Identify the available budget and resources before promising features.</p>
+                        </div>
+                        <div class="z-20 flex items-center justify-center w-10 h-10 bg-secondary rounded-full border-4 border-white shadow-lg text-white font-bold">1</div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative mb-12">
+                    <div class="flex items-center justify-between w-full flex-row-reverse">
+                        <div class="w-5/12 text-left pl-8">
+                            <h3 class="text-xl font-bold text-primary">2. Gather Requirements</h3>
+                            <p class="text-gray-500 text-sm mt-2">Conduct interviews or surveys to find out exactly what users need.</p>
+                        </div>
+                        <div class="z-20 flex items-center justify-center w-10 h-10 bg-secondary rounded-full border-4 border-white shadow-lg text-white font-bold">2</div>
+                        <div class="w-5/12 pr-8"></div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative mb-12">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="w-5/12 text-right pr-8">
+                            <h3 class="text-xl font-bold text-primary">3. Establish Boundaries</h3>
+                            <p class="text-gray-500 text-sm mt-2">Clearly define the project's "Start" and "End" points. Say "No" professionally.</p>
+                        </div>
+                        <div class="z-20 flex items-center justify-center w-10 h-10 bg-secondary rounded-full border-4 border-white shadow-lg text-white font-bold">3</div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative mb-12">
+                    <div class="flex items-center justify-between w-full flex-row-reverse">
+                        <div class="w-5/12 text-left pl-8">
+                            <h3 class="text-xl font-bold text-primary">4. Create Scope Statement</h3>
+                            <p class="text-gray-500 text-sm mt-2">A written document that confirms the scope details with your sponsor.</p>
+                        </div>
+                        <div class="z-20 flex items-center justify-center w-10 h-10 bg-secondary rounded-full border-4 border-white shadow-lg text-white font-bold">4</div>
+                        <div class="w-5/12 pr-8"></div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="w-5/12 text-right pr-8">
+                            <h3 class="text-xl font-bold text-primary">5. Get Sign-off</h3>
+                            <p class="text-gray-500 text-sm mt-2">Ensure the project sponsor formally approves the plan before work begins.</p>
+                        </div>
+                        <div class="z-20 flex items-center justify-center w-10 h-10 bg-accent rounded-full border-4 border-white shadow-lg text-white font-bold">5</div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: MANAGEMENT PLAN TEMPLATE & BOUNDARIES (Table & Grid) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Table Card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-primary p-6">
+                    <h3 class="text-2xl font-bold text-white">Scope Management Plan</h3>
+                    <p class="text-indigo-100 text-sm">The "How-To" guide for the project team.</p>
+                </div>
+                <div class="p-6">
+                    <table class="w-full text-left text-sm text-gray-600">
+                        <thead class="bg-gray-50 text-xs uppercase text-gray-500">
+                            <tr>
+                                <th class="px-4 py-3 rounded-l-md">Section</th>
+                                <th class="px-4 py-3 rounded-r-md">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-4 py-4 font-semibold text-primary">Scope Definition</td>
+                                <td class="px-4 py-4">How the scope will be written and finalized.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-4 py-4 font-semibold text-primary">WBS Creation</td>
+                                <td class="px-4 py-4">Breaking scope down into manageable tasks.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-4 py-4 font-semibold text-primary">Scope Validation</td>
+                                <td class="px-4 py-4">Process for formal client acceptance of deliverables.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-4 py-4 font-semibold text-primary">Change Control</td>
+                                <td class="px-4 py-4">Steps required to request and approve scope changes.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-4 py-4 font-semibold text-primary">Scope Monitoring</td>
+                                <td class="px-4 py-4">Tracking progress to ensure the team stays "on-scope".</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Boundaries Card -->
+            <div class="flex flex-col gap-6">
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-8 border-green-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Setting Boundaries (Example)</h3>
+                    <p class="text-sm text-gray-600 mb-4">Scenario: Building a Hospital Database.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-green-50 p-4 rounded text-center">
+                            <span class="block text-green-700 font-bold mb-1">IN SCOPE</span>
+                            <span class="text-xs text-green-800">Current Patient Records (2020-Present)</span>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded text-center">
+                            <span class="block text-red-700 font-bold mb-1">OUT OF SCOPE</span>
+                            <span class="text-xs text-red-800">Historical Records (Pre-2020)</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-500 bg-gray-50 p-3 rounded">
+                        <strong>Rationale:</strong> Protects the team from being overworked and ensures deadlines (e.g., 2026) are met.
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-accent to-orange-400 rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex items-start">
+                        <span class="text-4xl mr-4">💡</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Pro-Tip for Managers</h3>
+                            <p class="opacity-90 text-sm">
+                                Always use a <strong>"Project Scope Change"</strong> template during the Control & Monitoring phase. Documentation is your only defense against deviations from the original plan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark text-gray-400 py-12 text-center text-sm border-t border-gray-800">
+        <p>Generated based on "Project Scope: Definition, Creep, and Management" reference material.</p>
+        <p class="mt-2">&copy; 2026 IT Project Management Visuals.</p>
+    </footer>
+
+    <script>
+        // --- DATA PROCESSING UTILS ---
+        
+        // Function to wrap long labels for Chart.js
+        function wrapLabel(str, maxLen = 16) {
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length < maxLen) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Global Chart Defaults
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#475569';
+        Chart.defaults.scale.grid.color = '#e2e8f0';
+
+        // --- CHART 1: CAUSES OF SCOPE CREEP (Bar Chart) ---
+        const creepLabels = [
+            "Vague Initial Requirements",
+            "Lack of Stakeholder Involvement", 
+            "Poor Change Control",
+            "Gold Plating Features"
+        ];
+        
+        // Apply label wrapping
+        const processedCreepLabels = creepLabels.map(l => wrapLabel(l));
+
+        const ctxCreep = document.getElementById('creepCausesChart').getContext('2d');
+        new Chart(ctxCreep, {
+            type: 'bar',
+            data: {
+                labels: processedCreepLabels,
+                datasets: [{
+                    label: 'Impact Frequency Score',
+                    data: [85, 70, 65, 40], // Hypothetical weighting based on PDF narrative emphasis
+                    backgroundColor: [
+                        '#4F46E5', // Primary
+                        '#06B6D4', // Secondary
+                        '#F59E0B', // Accent
+                        '#6366F1'  // Light Indigo
+                    ],
+                    borderRadius: 8,
+                    borderSkipped: false,
+                    barPercentage: 0.6,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                const label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        },
+                        backgroundColor: '#1E293B',
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Frequency / Impact' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: SCOPE VS RESOURCES (Line Chart) ---
+        const ctxImpact = document.getElementById('impactChart').getContext('2d');
+        new Chart(ctxImpact, {
+            type: 'line',
+            data: {
+                labels: ['Kickoff', 'Requirements', 'Design', 'Development', 'Testing', 'Delivery'],
+                datasets: [
+                    {
+                        label: 'Planned Scope',
+                        data: [10, 25, 45, 65, 85, 100],
+                        borderColor: '#10B981', // Green
+                        backgroundColor: '#10B981',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'Actual Scope (Creep)',
+                        data: [10, 30, 55, 90, 120, 150],
+                        borderColor: '#EF4444', // Red
+                        backgroundColor: '#EF4444',
+                        borderWidth: 3,
+                        borderDash: [5, 5],
+                        tension: 0.4,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'Resource/Budget Limit',
+                        data: [100, 100, 100, 100, 100, 100],
+                        borderColor: '#4F46E5', // Primary
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: { position: 'top', align: 'end' },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                const label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        },
+                        backgroundColor: '#1E293B',
+                        usePointStyle: true
+                    }
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: 'Effort / Workload Units' },
+                        suggestedMax: 160
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
