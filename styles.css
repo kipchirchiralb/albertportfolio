@@ -297,6 +297,24 @@ a {
   font-size: 0.95rem;
 }
 
+@media (max-width: 960px) {
+  .page {
+    padding: 28px 20px 56px;
+  }
+
+  .hero {
+    padding: 36px 28px;
+  }
+
+  .hero__art {
+    min-height: 260px;
+  }
+
+  .iframe-card iframe {
+    height: 200px;
+  }
+}
+
 @media (max-width: 720px) {
   .hero {
     padding: 32px 24px;
@@ -304,5 +322,55 @@ a {
 
   .section--portfolio {
     padding: 32px 20px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .hero__meta {
+    gap: 4px;
+  }
+
+  .section {
+    margin-top: 48px;
+  }
+
+  .iframe-card iframe {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 24px 16px 48px;
+  }
+
+  .hero {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .hero__card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .section--portfolio {
+    padding: 28px 16px;
+    border-radius: 22px;
+  }
+
+  .iframe-card {
+    padding: 14px;
+  }
+
+  .iframe-card iframe {
+    height: 160px;
   }
 }
